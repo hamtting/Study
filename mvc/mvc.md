@@ -40,6 +40,7 @@
 
 ## 오류 대비
 <img src="./images/mvc2.PNG" width="800" height="500"/>
+
 - 애플리케이션 로직이 들어가 있는 was는 잘 죽는다. db의 영향을 받아서 죽기도 한다.
 - 대부분의 장애는 web이 아닌 was에서 난다.
 - web이 동적 처리를 was에 요청했는데 was가 죽거나 연결이 잘 안될 경우 was에 오류가 있다는 걸 인지하고 오류화면 HTML을 내려준다.
@@ -54,6 +55,7 @@
 
 ## 서블릿
 <img src="./images/mvc3.PNG" width="800" height="500"/>
+
 - extends HttpServlet 상속받아서 사용한다.
 - HTTP 요청이 들어오면 WAS가 HttpServletRequest와HttpServletResponse 객체를 새롭게 만들어서 서블릿 객체를 호출한다. 
 - 서블릿 객체가 호출되면 비즈니스 로직이 구현된 service()가 실행된다.
@@ -61,5 +63,15 @@
   1) HTTP 요청 정보를 편리하게 사용할 수 있는 HttpServletRequest
   2) HTTP 응답 정보를 편리하게 제공할 수 있는 HttpServletResponse
 - HttpServletRequest에서 요청 시 주는 데이터를 편하게 뽑아서 쓸 수 있고 HttpServletResponse는 응답시 편하게 데이터를 세팅해서 보내줄 수 있게 해준다.
-
+- 개발자는 HTTP 스펙을 매우 편리하게 사용할 수 있다.
+  
 > HTTP 스펙 : HTTP 메서드, HTTP 상태 코드, HTTP 헤더,HTTP 메시지 구조(요청메시지,응답메시지)
+
+## WAS와 서블릿
+<img src="./images/mvc4.PNG" width="800" height="500"/>
+
+- 서블릿을 지원하는 WAS안에는 서블릿 컨테이너가 있다.
+- WAS는 서블릿 컨테이너 안에 서블릿 객체를 생성한다. 
+- WAS가 올라갈 때 서블릿을 같이 실행하고 WAS가 내려갈 때 서블릿을 종료한다.(서블릿 생명주기)
+- WAS는 서블릿 컨테이너 안에 여러개의 섭블릿을 모두 관리한다.
+  
